@@ -9,7 +9,7 @@ BUFFER_SIZE = 64
 SAMPLING_RATE = 512.0 # Hz
 DELTA_T = 1 / SAMPLING_RATE
 DELTA_F = SAMPLING_RATE / BUFFER_SIZE
-THRESHOLD = 8000
+THRESHOLD = 13000
 DETECT_INTERVAL = timedelta(milliseconds=500)
 buf = np.zeros(BUFFER_SIZE, dtype=np.int)
 i = 0
@@ -68,7 +68,7 @@ while True:
                         last_detected = datetime.now()
                 i = 0
         elif signal[0] == "MEDITATION":
-            if int(signal[1]) > 75:
+            if int(signal[1]) > 60:
                 # move forward
                 broadcast("F") #Forward
             else:
